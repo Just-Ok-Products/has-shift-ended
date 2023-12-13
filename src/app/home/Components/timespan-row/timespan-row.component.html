@@ -1,13 +1,6 @@
 
-<div class="row">
-  <mat-form-field class="col-2" *ngIf="index % 2 == 0">
-    <input matInput readonly="true" tabindex="-1" value="Start">
-  </mat-form-field>
-  <mat-form-field [class]="'col-' + ((intervals.length - 1) == index ? 1 : 2)" *ngIf="index % 2 == 1">
-    <input matInput readonly="true" tabindex="-1" value="Stop">
-  </mat-form-field>
+<div class="row">  
   <button 
-    *ngIf="(intervals.length - 1) == index && index % 2 == 1"
     mat-icon-button
     class="col-1"
     (click)="setTimeToNow()"
@@ -16,6 +9,12 @@
   >
     <i class="fa fa-clock"></i>
   </button>
+  <mat-form-field class="col-1" *ngIf="index % 2 == 0">
+    <input matInput readonly="true" tabindex="-1" value="Start">
+  </mat-form-field>
+  <mat-form-field class="col-1)" *ngIf="index % 2 == 1">
+    <input matInput readonly="true" tabindex="-1" value="Stop">
+  </mat-form-field>
   <mat-form-field class="col-5">
     <mat-label>Insert hour</mat-label>
     <input [name]="'h' + index" [(ngModel)]="hours" matInput type="number">
