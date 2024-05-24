@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-content>
+    {{solution?.solution?.departureTime | date:'HH:mm' }} -
+    {{solution?.solution?.arrivalTime | date:'HH:mm' }}
+    Price:
+    {{solution?.solution?.price?.amount}}
+    {{solution?.solution?.price?.currency}}
+  </mat-card-content>
+</mat-card>

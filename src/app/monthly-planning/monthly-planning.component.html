@@ -1,0 +1,21 @@
+<table *ngIf="rows" mat-table [dataSource]="rows">
+  <ng-container matColumnDef="Days">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-select (valueChange)="updateRows($event)" [(ngModel)]="currentMonth" name="month">
+        <mat-option *ngFor="let month of months" [value]="month">{{month}}</mat-option>
+      </mat-select>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.Days}} {{currentMonth}}</td>
+  </ng-container>
+  <ng-container matColumnDef="E">
+    <th mat-header-cell *matHeaderCellDef>Entrate</th>
+    <td mat-cell *matCellDef="let element"></td>
+  </ng-container>
+  <ng-container matColumnDef="U">
+    <th mat-header-cell *matHeaderCellDef>Uscite</th>
+    <td mat-cell *matCellDef="let element"></td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="cols"></tr>
+  <tr mat-row *matRowDef="let row; columns: cols;"></tr>
+</table>

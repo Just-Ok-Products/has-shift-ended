@@ -1,0 +1,8 @@
+<div class="container" *ngIf="isLoading">
+  <mat-spinner [diameter]="200" class="spinner"></mat-spinner>
+</div>
+<div *ngIf="dataFromTrenitalia">
+  <app-train-card *ngFor="let item of dataFromTrenitalia.solutions"
+    [solution]="item"
+  ></app-train-card>
+</div>

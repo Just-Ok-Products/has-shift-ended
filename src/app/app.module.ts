@@ -11,6 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatTableModule } from '@angular/material/table'
+import { MatSelectModule } from '@angular/material/select'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 //#endregion
 
 
@@ -20,15 +23,21 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TimespanRowComponent } from './home/Components/timespan-row/timespan-row.component';
 import { SnackbarService } from './snackbar.service';
+import { MonthlyPlanningComponent } from './monthly-planning/monthly-planning.component';
+import { TrainsModule } from './trains/trains.module';
 //#endregion
 
 @NgModule({
-  declarations: [	
+  declarations: [		
       AppComponent,
       HomeComponent,
-      TimespanRowComponent
+      TimespanRowComponent,
+      MonthlyPlanningComponent
    ],
   imports: [
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatTableModule,
     AppRoutingModule,
     MatTooltipModule,
     BrowserAnimationsModule,
@@ -38,7 +47,8 @@ import { SnackbarService } from './snackbar.service';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    TrainsModule
   ],
   providers: [
     SnackbarService,
