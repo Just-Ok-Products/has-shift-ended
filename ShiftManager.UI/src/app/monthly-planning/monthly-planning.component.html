@@ -7,13 +7,11 @@
     </th>
     <td mat-cell *matCellDef="let element"> {{element.Days}} {{currentMonth}}</td>
   </ng-container>
-  <ng-container matColumnDef="E">
-    <th mat-header-cell *matHeaderCellDef>Entrate</th>
-    <td mat-cell *matCellDef="let element"></td>
-  </ng-container>
-  <ng-container matColumnDef="U">
-    <th mat-header-cell *matHeaderCellDef>Uscite</th>
-    <td mat-cell *matCellDef="let element"></td>
+  <ng-container matColumnDef="Movements">
+    <th mat-header-cell *matHeaderCellDef>{{'Entrate / uscite' | uppercase}}</th>
+    <td mat-cell *matCellDef="let element">
+      
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="cols"></tr>

@@ -29,8 +29,10 @@ export class HomeComponent implements OnInit {
   }
 
   public removeInterval() {
-    this.numberOfIntervals--;
-    this.intervals.pop();
+    if (this.numberOfIntervals > 0) {
+      this.numberOfIntervals--;
+      this.intervals.pop();
+    }
   }
 
   public updateData(rowData: TimespanRowData) {

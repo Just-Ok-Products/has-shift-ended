@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "./",
+			"name": "Frontend"
+		},
+    {
+      "path": "../ShiftManager.API",
+      "name": "API"
+    }
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#5C023E",
+			"titleBar.activeBackground": "#800257",
+			"titleBar.activeForeground": "#FFFAFD"
+		}
+	}
+}

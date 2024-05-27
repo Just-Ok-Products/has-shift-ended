@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ShiftManager.UI", "ShiftManager.UI\ShiftManager.UI.esproj", "{9F1CF60F-2AC6-4C99-8221-F8ECDF5B9358}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShiftManager.API", "ShiftManager.API\ShiftManager.API.csproj", "{42670400-1827-49E3-AF90-E28A5DF5CA69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F1CF60F-2AC6-4C99-8221-F8ECDF5B9358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F1CF60F-2AC6-4C99-8221-F8ECDF5B9358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42670400-1827-49E3-AF90-E28A5DF5CA69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42670400-1827-49E3-AF90-E28A5DF5CA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42670400-1827-49E3-AF90-E28A5DF5CA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42670400-1827-49E3-AF90-E28A5DF5CA69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF3DDB32-1B78-432D-A6C1-855670A7ECC5}
+	EndGlobalSection
+EndGlobal

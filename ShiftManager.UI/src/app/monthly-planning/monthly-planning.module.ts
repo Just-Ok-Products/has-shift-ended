@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //#region Material imports
@@ -18,42 +17,22 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 
 //#region Components
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { HomeComponent } from './home/home.component';
-import { AppRoutingModule } from './app-routing.module';
-import { TimespanRowComponent } from './home/Components/timespan-row/timespan-row.component';
-import { SnackbarService } from './snackbar.service';
-import { MonthlyPlanningComponent } from './monthly-planning/monthly-planning.component';
-import { TrainsModule } from './trains/trains.module';
+import { MonthlyPlanningComponent } from './monthly-planning.component';
 //#endregion
 
 @NgModule({
-  declarations: [		
-      AppComponent,
-      HomeComponent,
-      TimespanRowComponent,
-      MonthlyPlanningComponent
-   ],
+  declarations: [
+    MonthlyPlanningComponent
+  ],
   imports: [
     MatProgressSpinnerModule,
     MatSelectModule,
     MatTableModule,
-    AppRoutingModule,
-    MatTooltipModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    TrainsModule
+    MatSnackBarModule
   ],
-  providers: [
-    SnackbarService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
 })
-export class AppModule { }
+export class MonthlyPlanningModule { }
