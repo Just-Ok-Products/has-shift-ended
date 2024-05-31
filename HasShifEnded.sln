@@ -7,6 +7,8 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ShiftManager.UI", "ShiftMan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShiftManager.API", "ShiftManager.API\ShiftManager.API.csproj", "{42670400-1827-49E3-AF90-E28A5DF5CA69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShiftManager.Core", "ShiftManager.Core\ShiftManager.Core.csproj", "{65544D60-283C-4203-9847-89CEA5D09E3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{42670400-1827-49E3-AF90-E28A5DF5CA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42670400-1827-49E3-AF90-E28A5DF5CA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42670400-1827-49E3-AF90-E28A5DF5CA69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65544D60-283C-4203-9847-89CEA5D09E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65544D60-283C-4203-9847-89CEA5D09E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65544D60-283C-4203-9847-89CEA5D09E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65544D60-283C-4203-9847-89CEA5D09E3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
