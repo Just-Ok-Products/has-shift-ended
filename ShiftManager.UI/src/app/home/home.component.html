@@ -15,6 +15,14 @@
       [onSetTime]="onSetTimes"
       (onGetData)="updateData($event)"
     ></app-timespan-row>
+    <div class="row suggested-exit-row" *ngIf="suggestedExitTime">
+      <mat-form-field class="col-1">
+        <input matInput readonly="true" tabindex="-1" value="Stop">
+      </mat-form-field>
+      <mat-form-field class="col-11">
+        <input matInput readonly="true" disabled tabindex="-1" [value]="suggestedExitTime | date:'HH:mm'">
+      </mat-form-field>
+    </div>
   </div>
   <div class="row">
     <button class="col-3" (click)="removeInterval()" mat-button>REMOVE</button>

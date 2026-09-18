@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response } from '../Models/Response'
 import { TrenitaliaResponse } from '../Models/TrenitaliaResponse';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -8,10 +9,10 @@ import { TrenitaliaResponse } from '../Models/TrenitaliaResponse';
 export class HttpRequestsService {
 
     public static jwtToken: string | undefined;
-    private apiUrl: string = "http://localhost:5200/";
+    private apiUrl: string = `${environment.apiBaseUrl}/`;
 
     public async apiGet<T>(apiEndpoint: string): Promise<Response<T>> {
-        let response = new Response<T>();
+        const apiResponse = new Response<T>();
         try {
             const response = await fetch(this.apiUrl + apiEndpoint,
                 {
@@ -26,20 +27,23 @@ export class HttpRequestsService {
                 throw new Error(`Error on get call ${apiEndpoint}: ${response.status}`);
             }
 
-            const result = (await response.json()) as Response<T>;
-            return result;
+            // Il backend (proxy passthrough) ritorna il body così com'è, non incapsulato in
+            // Response<T>: lo normalizziamo qui come già fa apiGenericPost per le altre verb.
+            const data = await response.json();
+            apiResponse.result = true;
+            apiResponse.body = (Array.isArray(data) ? data : [data]) as T[];
+            return apiResponse;
         } catch (error) {
-            response.result = false;
+            apiResponse.result = false;
 
             if (error instanceof Error) {
                 console.error(`Error ${error.message}`)
-                response.notes = error.message;
-                return response;
+                apiResponse.notes = error.message;
             } else {
                 console.error(`Unexpected error: `, error)
-                response.notes = 'Unexpected error';
-                return response;
+                apiResponse.notes = 'Unexpected error';
             }
+            return apiResponse;
         }
     }
 

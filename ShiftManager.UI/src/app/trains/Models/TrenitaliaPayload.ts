@@ -1,6 +1,10 @@
+// Default: Udine -> Codroipo, usati finché l'utente non sceglie altre stazioni dall'autocomplete.
+export const DEFAULT_DEPARTURE_LOCATION_ID = 830003026;
+export const DEFAULT_ARRIVAL_LOCATION_ID = 830002831;
+
 export class TrenitaliaPayload{
-  departureLocationId: number = 830003026 // Udine
-  arrivalLocationId: number = 830002831 // Codroipo
+  departureLocationId: number
+  arrivalLocationId: number
   departureTime: Date = new Date()
   adults: number = 1
   children: number = 0
@@ -16,5 +20,13 @@ export class TrenitaliaPayload{
   advancedSearchRequest = {
       bestFare: false,
       bikeFilter: false
+  }
+
+  constructor(
+    departureLocationId: number = DEFAULT_DEPARTURE_LOCATION_ID,
+    arrivalLocationId: number = DEFAULT_ARRIVAL_LOCATION_ID
+  ) {
+    this.departureLocationId = departureLocationId;
+    this.arrivalLocationId = arrivalLocationId;
   }
 }

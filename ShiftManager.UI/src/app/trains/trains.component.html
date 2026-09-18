@@ -1,8 +1,26 @@
+<details>
+  <summary>Cambia stazioni di partenza/arrivo</summary>
+  <div class="row">
+    <app-station-search label="Partenza" (stationSelected)="onDepartureSelected($event)"></app-station-search>
+    <app-station-search label="Arrivo" (stationSelected)="onArrivalSelected($event)"></app-station-search>
+  </div>
+  <mat-form-field>
+    <mat-label>Minuti per raggiungere la stazione</mat-label>
+    <input matInput type="number" [(ngModel)]="trainSuggestionService.marginMinutes">
+  </mat-form-field>
+  <button mat-button (click)="search()">CERCA</button>
+</details>
+
+<button mat-button (click)="toggleReachableNow()">
+  {{ showReachableNow ? 'Nascondi treno raggiungibile ora' : 'Mostra treno raggiungibile ora' }}
+</button>
+
 <div class="container" *ngIf="isLoading">
   <mat-spinner [diameter]="200" class="spinner"></mat-spinner>
 </div>
 <div *ngIf="dataFromTrenitalia">
   <app-train-card *ngFor="let item of dataFromTrenitalia.solutions"
     [solution]="item"
+    [highlighted]="isReachableNow(item)"
   ></app-train-card>
 </div>

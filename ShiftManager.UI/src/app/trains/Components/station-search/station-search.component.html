@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <input matInput [ngModel]="query" (ngModelChange)="onInput($event)" autocomplete="off">
+</mat-form-field>
+<ul class="station-results" *ngIf="results.length">
+  <li *ngFor="let station of results" (click)="select(station)">{{ station.name }}</li>
+</ul>
