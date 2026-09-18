@@ -1,0 +1,47 @@
+<div class="hero" [class.hero--incoherent]="state.status === 'incoherent'">
+
+  <ng-container *ngIf="state.status === 'empty'; else notEmpty">
+    <button type="button" class="hero-big hero-big--action" (click)="addTimbratura.emit()">
+      Aggiungi timbratura
+    </button>
+  </ng-container>
+
+  <ng-template #notEmpty>
+    <p class="hero-big digits" *ngIf="state.status === 'incoherent'">Dati incoerenti</p>
+    <p class="hero-big digits" *ngIf="state.status === 'done'">PUOI USCIRE</p>
+    <p class="hero-big digits" *ngIf="state.status === 'working'">{{ formatTime(state.expectedExitTime) }}</p>
+    <p class="hero-big digits" *ngIf="state.status === 'onBreak'">mancano {{ formatHM(state.remainingMinutes) }}</p>
+
+    <p class="hero-sub" *ngIf="state.status === 'incoherent'">controlla le righe evidenziate</p>
+    <p class="hero-sub" *ngIf="state.status === 'done'">{{ formatHM(state.workedMinutes) }} fatte · +{{ formatHM(state.overtimeMinutes) }}</p>
+    <p class="hero-sub" *ngIf="state.status === 'working'">{{ formatHM(state.workedMinutes) }} fatte · mancano {{ formatHM(state.remainingMinutes) }}</p>
+    <p class="hero-sub" *ngIf="state.status === 'onBreak'">riprendi per vedere l'orario di uscita</p>
+
+    <div class="due-row">
+      <button type="button" class="due-toggle" *ngIf="!editingHoursDue" (click)="startEditingHoursDue()">
+        su {{ formatHM(hoursDue * 60) }} dovute
+      </button>
+      <input #hoursInput *ngIf="editingHoursDue" type="number" step="0.25" min="0" class="due-input digits"
+             [value]="hoursDue"
+             (blur)="commitHoursDue(hoursInput.value)"
+             (keydown.enter)="hoursInput.blur()">
+    </div>
+  </ng-template>
+
+  <button type="button" class="meal-voucher-badge" (click)="toggleMealVoucherDetail()" *ngIf="mealVoucherDetail">
+    <span>Buono pasto {{ mealVoucherDetail.earned ? '✔' : '✘' }}</span>
+  </button>
+  <ul class="meal-voucher-detail" *ngIf="mealVoucherExpanded && mealVoucherDetail">
+    <li [class.met]="mealVoucherDetail.morning">{{ mealVoucherDetail.morning ? '✔' : '✘' }} mattina ≥ 3h30</li>
+    <li [class.met]="mealVoucherDetail.lunch">{{ mealVoucherDetail.lunch ? '✔' : '✘' }} pausa ≥ 30 min (12:30-14:30)</li>
+    <li [class.met]="mealVoucherDetail.afternoon">{{ mealVoucherDetail.afternoon ? '✔' : '✘' }} pomeriggio ≥ 2h</li>
+    <li [class.met]="mealVoucherDetail.total">{{ mealVoucherDetail.total ? '✔' : '✘' }} totale ≥ 7h</li>
+  </ul>
+
+  <p class="train-row" *ngIf="!trainSuggestion.hasSearched">
+    <a href="#trains-block">cerca i treni →</a>
+  </p>
+  <p class="train-row digits" *ngIf="trainSuggestion.hasSearched && trainSuggestion.suggestedExitTime">
+    treno: esci entro le {{ formatTime(trainSuggestion.suggestedExitTime) }}
+  </p>
+</div>

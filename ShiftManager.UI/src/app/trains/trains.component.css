@@ -1,12 +1,29 @@
-.spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.stations-row {
+  display: flex;
+  gap: 1rem;
+  margin: 0.6rem 0;
+  flex-wrap: wrap;
 }
 
-.container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.margin-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.6rem 0;
+  color: var(--text-muted);
+}
+
+.margin-field input {
+  width: 5em;
+}
+
+.loading {
+  color: var(--text-muted);
+}
+
+.train-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
 }

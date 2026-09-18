@@ -1,24 +1,22 @@
 <details>
   <summary>Cambia stazioni di partenza/arrivo</summary>
-  <div class="row">
-    <app-station-search label="Partenza" (stationSelected)="onDepartureSelected($event)"></app-station-search>
+  <div class="stations-row">
+    <app-station-search label="Partenza" [query]="'Udine'" (stationSelected)="onDepartureSelected($event)"></app-station-search>
     <app-station-search label="Arrivo" (stationSelected)="onArrivalSelected($event)"></app-station-search>
   </div>
-  <mat-form-field>
-    <mat-label>Minuti per raggiungere la stazione</mat-label>
-    <input matInput type="number" [(ngModel)]="trainSuggestionService.marginMinutes">
-  </mat-form-field>
-  <button mat-button (click)="search()">CERCA</button>
+  <label class="margin-field">
+    Minuti per raggiungere la stazione
+    <input type="number" min="0" [(ngModel)]="trainSuggestionService.marginMinutes">
+  </label>
+  <button type="button" [disabled]="!arrivalLocationId" (click)="search()">Cerca</button>
 </details>
 
-<button mat-button (click)="toggleReachableNow()">
+<button type="button" (click)="toggleReachableNow()">
   {{ showReachableNow ? 'Nascondi treno raggiungibile ora' : 'Mostra treno raggiungibile ora' }}
 </button>
 
-<div class="container" *ngIf="isLoading">
-  <mat-spinner [diameter]="200" class="spinner"></mat-spinner>
-</div>
-<div *ngIf="dataFromTrenitalia">
+<p class="loading" *ngIf="isLoading">Cercando…</p>
+<div class="train-list" *ngIf="dataFromTrenitalia">
   <app-train-card *ngFor="let item of dataFromTrenitalia.solutions"
     [solution]="item"
     [highlighted]="isReachableNow(item)"

@@ -1,16 +1,31 @@
+.station-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  position: relative;
+}
+
 .station-results {
   list-style: none;
-  margin: 0;
+  margin: 0.2rem 0 0;
   padding: 0;
-  border: 1px solid #ccc;
-  max-width: 300px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  max-width: 260px;
+  position: absolute;
+  top: 100%;
+  z-index: 5;
 }
 
 .station-results li {
-  padding: 4px 8px;
+  padding: 0.4em 0.6em;
   cursor: pointer;
+  color: var(--text);
 }
 
 .station-results li:hover {
-  background: #eee;
+  background: var(--surface-alt);
 }

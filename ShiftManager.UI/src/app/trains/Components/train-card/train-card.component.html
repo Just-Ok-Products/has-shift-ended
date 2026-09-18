@@ -1,13 +1,10 @@
-<mat-card [class.reachable-now]="highlighted">
-  <mat-card-content>
-    {{solution?.solution?.departureTime | date:'HH:mm' }} -
-    {{solution?.solution?.arrivalTime | date:'HH:mm' }}
-    Price:
-    {{solution?.solution?.price?.amount}}
-    {{solution?.solution?.price?.currency}}
-    <span class="delay-badge" *ngIf="delayMinutes !== null">
-      In ritardo{{ delayMinutes > 0 ? ' di ' + delayMinutes + ' min' : '' }}
-    </span>
-    <span class="reachable-badge" *ngIf="highlighted">Raggiungibile ora</span>
-  </mat-card-content>
-</mat-card>
+<div class="card" [class.reachable-now]="highlighted">
+  <span class="digits">
+    {{solution?.solution?.departureTime | date:'HH:mm' }} - {{solution?.solution?.arrivalTime | date:'HH:mm' }}
+  </span>
+  <span>{{solution?.solution?.price?.amount}} {{solution?.solution?.price?.currency}}</span>
+  <span class="delay-badge" *ngIf="delayMinutes !== null">
+    In ritardo{{ delayMinutes > 0 ? ' di ' + delayMinutes + ' min' : '' }}
+  </span>
+  <span class="reachable-badge" *ngIf="highlighted">Raggiungibile ora</span>
+</div>

@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+[data-anim] {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}

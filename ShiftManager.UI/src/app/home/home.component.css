@@ -1,10 +1,63 @@
-.entry-container {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  overflow-x: hidden;
+.layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  align-items: start;
 }
 
-.suggested-exit-row {
-  color: grey;
-  opacity: 0.7;
+.column--read {
+  position: sticky;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.column--act {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.add-button {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  font-weight: 600;
+  padding: 0.8em;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.remove-button {
+  align-self: flex-start;
+}
+
+.trains-block {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .column--read {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  app-day-scene {
+    display: none;
+  }
 }

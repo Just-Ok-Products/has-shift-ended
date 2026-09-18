@@ -1,0 +1,75 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.hero-big {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.hero-big--action {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  padding: 0.6em 1em;
+  width: fit-content;
+}
+
+.hero--incoherent .hero-big {
+  color: var(--negative);
+}
+
+.hero-sub {
+  color: var(--text-muted);
+}
+
+.due-row {
+  margin-top: 0.2em;
+}
+
+.due-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-muted);
+  text-decoration: underline dotted;
+  font-size: 0.95rem;
+}
+
+.due-input {
+  width: 6em;
+}
+
+.meal-voucher-badge {
+  align-self: flex-start;
+  background: var(--surface-alt);
+  margin-top: 0.6em;
+}
+
+.meal-voucher-detail {
+  list-style: none;
+  margin: 0;
+  padding: 0.6em 0.8em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+}
+
+.meal-voucher-detail li.met {
+  color: var(--positive);
+}
+
+.train-row {
+  margin-top: 0.6em;
+  color: var(--text-muted);
+}
+
+.train-row a {
+  color: var(--accent);
+}

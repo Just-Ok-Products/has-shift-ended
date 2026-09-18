@@ -1,3 +1,113 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+:root {
+  --bg: #131a22;
+  --surface: #1c2530;
+  --surface-alt: #243040;
+  --text: #dce6ee;
+  --text-muted: #8d9bab;
+  --border: #2c3846;
+  --accent: #f0913c;
+  --positive: #6f9b8a;
+  --negative: #c4614f;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4efe7;
+  --surface: #fffaf3;
+  --surface-alt: #efe7db;
+  --text: #2a2420;
+  --text-muted: #6b6058;
+  --border: #ded2c2;
+  --accent: #c26f1e;
+  --positive: #4a7566;
+  --negative: #a8412f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6em 1em;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input {
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5em 0.6em;
+}
+
+input[type="time"] {
+  font-family: var(--font-mono);
+}
+
+details {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6em 0.8em;
+  background: var(--surface);
+}
+
+details > summary {
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.digits {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

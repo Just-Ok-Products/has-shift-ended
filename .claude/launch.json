@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "shiftmanager-ui",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ShiftManager.UI && npm start"],
+      "port": 4200
+    }
+  ]
+}

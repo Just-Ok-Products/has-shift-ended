@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpRequestsService } from './Services/httprequests.service';
-import { TrenitaliaPayload, DEFAULT_DEPARTURE_LOCATION_ID, DEFAULT_ARRIVAL_LOCATION_ID } from './Models/TrenitaliaPayload';
+import { TrenitaliaPayload, DEFAULT_DEPARTURE_LOCATION_ID } from './Models/TrenitaliaPayload';
 import { TrenitaliaResponse, Solution } from './Models/TrenitaliaResponse';
 import { Station } from './Components/station-search/station-search.component';
 import { TrainSuggestionService } from '../shared/services/train-suggestion.service';
@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
   templateUrl: './trains.component.html',
   styleUrls: ['./trains.component.css']
 })
-export class TrainsComponent implements OnInit {
+export class TrainsComponent {
 
   private solutionsUrl = `${environment.apiBaseUrl}/api/trains/solutions`;
   public isLoading = false;
@@ -19,7 +19,7 @@ export class TrainsComponent implements OnInit {
   public dataFromTrenitalia: TrenitaliaResponse | undefined;
 
   public departureLocationId: number = DEFAULT_DEPARTURE_LOCATION_ID;
-  public arrivalLocationId: number = DEFAULT_ARRIVAL_LOCATION_ID;
+  public arrivalLocationId: number | null = null;
 
   public reachableNow: Solution | null = null;
   public showReachableNow = false;
@@ -29,11 +29,6 @@ export class TrainsComponent implements OnInit {
     public trainSuggestionService: TrainSuggestionService
   ) { }
 
-  ngOnInit() {
-    // Ricerca automatica con le stazioni di default (Udine -> Codroipo), come già oggi.
-    this.search();
-  }
-
   public onDepartureSelected(station: Station) {
     this.departureLocationId = station.id;
   }
@@ -42,7 +37,12 @@ export class TrainsComponent implements OnInit {
     this.arrivalLocationId = station.id;
   }
 
+  // Nessuna ricerca automatica al caricamento: solo su richiesta esplicita dell'utente,
+  // e solo quando ha scelto una stazione di arrivo (quella di partenza ha un default visibile).
   public async search() {
+    if (!this.arrivalLocationId) {
+      return;
+    }
     const body = new TrenitaliaPayload(this.departureLocationId, this.arrivalLocationId);
     body.criteria.limit = 25;
     this.isLoading = true;

@@ -1,13 +1,14 @@
-.main {
-  height: 90vh;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.header {
-  height: 5vh;
-}
-
-.footer {
-  height: 5vh;
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface);
 }

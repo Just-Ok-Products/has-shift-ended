@@ -1,32 +1,40 @@
+<div class="layout">
+  <div class="column column--read">
+    <app-day-hero
+      [state]="dayState"
+      [hoursDue]="hoursDue"
+      [mealVoucherDetail]="mealVoucherDetail"
+      [trainSuggestion]="trainSuggestion"
+      (hoursDueChange)="onHoursDueChange($event)"
+      (addTimbratura)="addInterval()"
+    ></app-day-hero>
+    <app-day-scene
+      [progress]="dayState.progress"
+      [overtimeMinutes]="dayState.overtimeMinutes"
+      [status]="dayState.status"
+      [mealVoucherEarned]="mealVoucherDetail.earned"
+    ></app-day-scene>
+  </div>
 
-<div style="display: flex;flex-direction: column;height: 100%">
-  <div class="row">
-    <mat-form-field class="col-5">
-      <mat-label>Insert hours due</mat-label>
-      <input name="hd" [(ngModel)]="hoursDue" matInput type="number">
-    </mat-form-field>
-    <button class="col-7" mat-button (click)="intervals = []; numberOfIntervals = 0">RESET</button>
-  </div>
-  <div class="entry-container">
-    <app-timespan-row
-      *ngFor="let item of [].constructor(numberOfIntervals);let idx = index"
-      [intervals]="intervals"
-      [index]="idx"
-      [onSetTime]="onSetTimes"
-      (onGetData)="updateData($event)"
-    ></app-timespan-row>
-    <div class="row suggested-exit-row" *ngIf="suggestedExitTime">
-      <mat-form-field class="col-1">
-        <input matInput readonly="true" tabindex="-1" value="Stop">
-      </mat-form-field>
-      <mat-form-field class="col-11">
-        <input matInput readonly="true" disabled tabindex="-1" [value]="suggestedExitTime | date:'HH:mm'">
-      </mat-form-field>
+  <div class="column column--act">
+    <button type="button" class="add-button" (click)="addInterval()">Aggiungi timbratura</button>
+
+    <div class="rows">
+      <app-timespan-row
+        *ngFor="let value of intervals; let i = index"
+        [index]="i"
+        [value]="value"
+        [invalid]="isInvalid(i)"
+        (valueChange)="onIntervalChange(i, $event)"
+      ></app-timespan-row>
     </div>
-  </div>
-  <div class="row">
-    <button class="col-3" (click)="removeInterval()" mat-button>REMOVE</button>
-    <button class="col-3" (click)="addInterval()" mat-button>ADD</button>
-    <button class="col-6" [disabled]="(intervals.length % 2) == 1" (click)="calcTimeSpent()" mat-button>CALC</button>
+
+    <button type="button" class="remove-button" *ngIf="intervals.length > 0" (click)="removeLastInterval()">
+      Rimuovi ultima
+    </button>
+
+    <div id="trains-block" class="trains-block">
+      <app-trains></app-trains>
+    </div>
   </div>
 </div>

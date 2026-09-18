@@ -1,15 +1,24 @@
-.delay-badge {
-  color: #b71c1c;
-  font-weight: bold;
-  margin-left: 8px;
-}
-
-.reachable-badge {
-  color: #1b5e20;
-  font-weight: bold;
-  margin-left: 8px;
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
 }
 
 .reachable-now {
-  border: 2px solid #1b5e20;
+  border-color: var(--positive);
+}
+
+.delay-badge {
+  color: var(--negative);
+  font-weight: 600;
+}
+
+.reachable-badge {
+  color: var(--positive);
+  font-weight: 600;
 }

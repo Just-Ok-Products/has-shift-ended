@@ -1,0 +1,188 @@
+
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lago al tramonto con una gallina sulla riva">
+
+  <!-- 1. CIELO GIORNO -->
+  <g id="sky-day">
+    <polygon points="0,0 480,0 480,44 0,38" fill="#3f5d78"/>
+    <polygon points="0,38 480,44 480,86 0,92" fill="#5a7b92"/>
+    <polygon points="0,92 480,86 480,128 0,120" fill="#81a0ab"/>
+    <polygon points="0,120 480,128 480,170 0,170" fill="#aec0bb"/>
+    <polygon points="120,38 260,44 190,92" fill="#4e6d86" opacity=".55"/>
+    <polygon points="300,86 440,92 380,128" fill="#6f8fa0" opacity=".5"/>
+  </g>
+
+  <!-- 2. CIELO TRAMONTO -->
+  <g id="sky-dusk" data-anim opacity="0.000">
+    <polygon points="0,0 480,0 480,44 0,38" fill="#2a2f52"/>
+    <polygon points="0,38 480,44 480,86 0,92" fill="#5b4270"/>
+    <polygon points="0,92 480,86 480,128 0,120" fill="#a8546a"/>
+    <polygon points="0,120 480,128 480,170 0,170" fill="#e58a43"/>
+    <polygon points="120,38 260,44 190,92" fill="#463868" opacity=".6"/>
+    <polygon points="300,86 440,92 380,128" fill="#c06459" opacity=".55"/>
+    <polygon points="30,120 170,128 90,170" fill="#f0a355" opacity=".45"/>
+  </g>
+
+  <!-- 3. CIELO NOTTE -->
+  <g id="sky-night" data-anim opacity="0.000">
+    <polygon points="0,0 480,0 480,44 0,38" fill="#0d1019"/>
+    <polygon points="0,38 480,44 480,86 0,92" fill="#131829"/>
+    <polygon points="0,92 480,86 480,128 0,120" fill="#1b2238"/>
+    <polygon points="0,120 480,128 480,170 0,170" fill="#26304a"/>
+    <polygon points="300,86 440,92 380,128" fill="#222a45" opacity=".7"/>
+  </g>
+
+  <!-- 4. STELLE -->
+  <g id="stars" data-anim opacity="0.000" fill="#e8ddd0">
+    <polygon points="62,26 64,30 62,34 60,30"/>
+    <polygon points="148,14 150,18 148,22 146,18"/>
+    <polygon points="226,40 228,44 226,48 224,44"/>
+    <polygon points="318,20 320,24 318,28 316,24"/>
+    <polygon points="402,36 404,40 402,44 400,40"/>
+    <polygon points="440,12 442,16 440,20 438,16"/>
+    <polygon points="98,62 100,66 98,70 96,66" opacity=".75"/>
+    <polygon points="262,72 264,76 262,80 260,76" opacity=".75"/>
+    <polygon points="362,58 364,62 362,66 360,62" opacity=".75"/>
+    <polygon points="188,96 190,99 188,102 186,99" opacity=".5"/>
+    <polygon points="430,84 432,87 430,90 428,87" opacity=".5"/>
+  </g>
+
+  <!-- 5. SOLE (dietro l'acqua e dietro i monti: affondando sparisce) -->
+  <g id="sun" data-anim transform="translate(230.0,44.0)">
+    <polygon points="17,0 12,12 0,17 -12,12 -17,0 -12,-12 0,-17 12,-12" fill="#f0913c"/>
+    <polygon points="10.5,0 7.4,7.4 0,10.5 -7.4,7.4 -10.5,0 -7.4,-7.4 0,-10.5 7.4,-7.4" fill="#f8cf8e"/>
+  </g>
+
+  <!-- 6. CRINALE LONTANO (centro libero: 196-392, dove tramonta il sole) -->
+  <g id="ridge">
+    <polygon points="0,170 0,152 40,126 76,148 108,118 142,152 174,138 196,170" fill="#233043"/>
+    <polygon points="0,170 0,160 52,140 110,162 156,138 190,170" fill="#1a2532"/>
+    <polygon points="392,170 410,142 442,158 480,134 480,170" fill="#233043"/>
+    <polygon points="414,170 440,150 480,160 480,170" fill="#1a2532"/>
+  </g>
+
+  <!-- 7. ACQUA (piu' chiara della riva: il lago deve leggersi) -->
+  <g id="water">
+    <polygon points="0,170 480,170 480,178 0,179" fill="#4a5a70"/>
+    <polygon points="0,179 480,178 480,202 0,205" fill="#2d4258"/>
+    <polygon points="0,205 480,202 480,228 0,226" fill="#24374c"/>
+    <polygon points="0,226 480,228 480,254 0,254" fill="#1c2c3e"/>
+    <polygon points="30,205 190,202 110,226" fill="#32485f" opacity=".6"/>
+    <polygon points="300,228 440,226 360,254" fill="#203144" opacity=".6"/>
+  </g>
+
+  <!-- 8. NOTTE SULL'ACQUA -->
+  <polygon id="water-night" data-anim opacity="0.000" points="0,170 480,170 480,254 0,254" fill="#0d1320"/>
+
+  <!-- 9. RIFLESSO (scala in verticale con il progresso) -->
+  <g id="reflection" data-anim transform="translate(230.0,171) scale(1,0.000)" opacity="0.000">
+    <polygon points="-11,0 11,0 14,26 -14,26" fill="#ffcf8e" opacity=".60"/>
+    <polygon points="-16,30 16,30 21,56 -21,56" fill="#ffcf8e" opacity=".42"/>
+    <polygon points="-23,60 23,60 31,82 -31,82" fill="#ffcf8e" opacity=".25"/>
+    <polygon points="-4,0 4,0 5,26 -5,26" fill="#fff2d8" opacity=".55"/>
+    <polygon points="-6,30 6,30 8,56 -8,56" fill="#fff2d8" opacity=".32"/>
+  </g>
+
+  <!-- 10. RIVA IN PRIMO PIANO (piu' scura dell'acqua) -->
+  <g id="shore">
+    <polygon points="0,254 120,248 262,258 380,249 480,256 480,300 0,300" fill="#232a1c"/>
+    <polygon points="0,254 120,248 92,300 0,300" fill="#2b3323"/>
+    <polygon points="262,258 380,249 480,256 480,300 336,300" fill="#1d2317"/>
+    <polygon points="92,300 120,248 262,258 244,300" fill="#313a27" opacity=".55"/>
+    <polygon points="404,254 410,218 416,255" fill="#181d12"/>
+    <polygon points="418,255 426,210 432,256" fill="#1c2216"/>
+    <polygon points="432,256 442,226 448,257" fill="#181d12"/>
+  </g>
+
+  <!-- 11. CIOTOLA (buono pasto) -->
+  <g id="bowl-full" data-anim transform="translate(196,280)" opacity="0">
+    <polygon points="-12,-17 0,-27 12,-17" fill="#e8b36a"/>
+    <polygon points="-6,-19 2,-30 10,-19" fill="#ffdfa8"/>
+    <polygon points="-18,-15 18,-15 13,-1 -13,-1" fill="#6b5a4a"/>
+    <polygon points="-18,-15 18,-15 22,-19 -22,-19" fill="#8d7b69"/>
+    <polygon points="-13,-1 13,-1 8,2 -8,2" fill="#4e4136"/>
+  </g>
+  <g id="bowl-empty" data-anim transform="translate(196,280)" opacity="1">
+    <polygon points="-18,-15 18,-15 13,-1 -13,-1" fill="#59493c"/>
+    <polygon points="-18,-15 18,-15 22,-19 -22,-19" fill="#7a6a59"/>
+    <polygon points="-14,-16 14,-16 10,-13 -10,-13" fill="#3e332a"/>
+    <polygon points="-13,-1 13,-1 8,2 -8,2" fill="#42372d"/>
+  </g>
+
+  <!-- 12. GALLINA - quattro pose in dissolvenza incrociata -->
+
+  <!-- vuoto: accovacciata, occhi chiusi -->
+  <g id="hen-idle" data-anim transform="translate(96,286)" opacity="1">
+    <g transform="translate(0,9)">
+      <polygon points="-22,-24 -38,-40 -30,-18" fill="#ded1c0"/>
+      <polygon points="-22,-24 -30,-18 -24,-12" fill="#bdae9c"/>
+      <polygon points="-22,-22 -10,-34 8,-35 20,-24" fill="#e8ddd0"/>
+      <polygon points="-22,-22 20,-24 16,-10 -2,-6 -14,-10" fill="#cdbfae"/>
+      <polygon points="-10,-28 8,-30 2,-16" fill="#f6efe4"/>
+      <polygon points="10,-34 22,-40 31,-33 24,-25 12,-27" fill="#e8ddd0"/>
+      <polygon points="14,-38 16,-45 21,-37" fill="#c4614f"/>
+      <polygon points="21,-38 26,-44 28,-36" fill="#c4614f"/>
+      <polygon points="31,-33 40,-30 31,-27" fill="#f0913c"/>
+      <path d="M22,-33 h6" stroke="#1b2530" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </g>
+  </g>
+
+  <!-- in corso: in piedi, che becca -->
+  <g id="hen-pecking" data-anim transform="translate(96,286)" opacity="0">
+    <polygon points="-3,-7 1,-7 3,0 -1,0" fill="#f0913c"/>
+    <polygon points="7,-7 11,-7 10,0 6,0" fill="#dd7c2b"/>
+    <polygon points="-4,0 5,0 -1,2.5" fill="#f0913c"/>
+    <polygon points="5,0 14,0 7,2.5" fill="#dd7c2b"/>
+    <polygon points="-22,-24 -39,-41 -30,-18" fill="#ded1c0"/>
+    <polygon points="-22,-24 -30,-18 -24,-12" fill="#bdae9c"/>
+    <polygon points="-22,-22 -10,-34 8,-35 20,-24" fill="#e8ddd0"/>
+    <polygon points="-22,-22 20,-24 16,-10 -2,-6 -14,-10" fill="#cdbfae"/>
+    <polygon points="-10,-28 8,-30 2,-16" fill="#f6efe4"/>
+    <polygon points="13,-30 23,-27 25,-17 15,-20" fill="#e8ddd0"/>
+    <polygon points="21,-23 33,-21 36,-11 25,-8 19,-15" fill="#e8ddd0"/>
+    <polygon points="22,-25 24,-32 29,-24" fill="#c4614f"/>
+    <polygon points="29,-24 34,-30 36,-22" fill="#c4614f"/>
+    <polygon points="26,-9 29,-2 32,-10" fill="#c4614f"/>
+    <polygon points="36,-14 45,-10 36,-7" fill="#f0913c"/>
+    <circle cx="29" cy="-16" r="1.6" fill="#1b2530"/>
+  </g>
+
+  <!-- in pausa: seduta, testa alta -->
+  <g id="hen-sitting" data-anim transform="translate(96,286)" opacity="0">
+    <g transform="translate(0,7)">
+      <polygon points="-22,-24 -38,-40 -30,-18" fill="#ded1c0"/>
+      <polygon points="-22,-24 -30,-18 -24,-12" fill="#bdae9c"/>
+      <polygon points="-22,-22 -10,-34 8,-35 20,-24" fill="#e8ddd0"/>
+      <polygon points="-22,-22 20,-24 16,-10 -2,-6 -14,-10" fill="#cdbfae"/>
+      <polygon points="-10,-28 8,-30 2,-16" fill="#f6efe4"/>
+      <polygon points="14,-32 20,-42 28,-39 22,-28" fill="#e8ddd0"/>
+      <polygon points="19,-44 28,-52 38,-46 34,-36 24,-36" fill="#e8ddd0"/>
+      <polygon points="23,-52 26,-59 30,-51" fill="#c4614f"/>
+      <polygon points="30,-52 35,-58 37,-50" fill="#c4614f"/>
+      <polygon points="34,-37 36,-30 30,-35" fill="#c4614f"/>
+      <polygon points="38,-45 47,-42 38,-39" fill="#f0913c"/>
+      <circle cx="31" cy="-45" r="1.6" fill="#1b2530"/>
+    </g>
+  </g>
+
+  <!-- completato: ali spiegate -->
+  <g id="hen-wings" data-anim transform="translate(96,286)" opacity="0">
+    <polygon points="-3,-7 1,-7 3,0 -1,0" fill="#f0913c"/>
+    <polygon points="7,-7 11,-7 10,0 6,0" fill="#dd7c2b"/>
+    <polygon points="-4,0 5,0 -1,2.5" fill="#f0913c"/>
+    <polygon points="5,0 14,0 7,2.5" fill="#dd7c2b"/>
+    <polygon points="-10,-30 -34,-48 -6,-18" fill="#d6c8b6"/>
+    <polygon points="-22,-24 -38,-40 -30,-18" fill="#ded1c0"/>
+    <polygon points="-22,-24 -30,-18 -24,-12" fill="#bdae9c"/>
+    <polygon points="-22,-22 -10,-34 8,-35 20,-24" fill="#e8ddd0"/>
+    <polygon points="-22,-22 20,-24 16,-10 -2,-6 -14,-10" fill="#cdbfae"/>
+    <polygon points="0,-31 24,-48 13,-16" fill="#f6efe4"/>
+    <polygon points="14,-32 20,-42 28,-39 22,-28" fill="#e8ddd0"/>
+    <polygon points="19,-44 28,-52 38,-46 34,-36 24,-36" fill="#e8ddd0"/>
+    <polygon points="23,-52 26,-59 30,-51" fill="#c4614f"/>
+    <polygon points="30,-52 35,-58 37,-50" fill="#c4614f"/>
+    <polygon points="34,-37 36,-30 30,-35" fill="#c4614f"/>
+    <polygon points="38,-45 47,-42 38,-39" fill="#f0913c"/>
+    <circle cx="31" cy="-45" r="1.6" fill="#1b2530"/>
+  </g>
+
+</svg>

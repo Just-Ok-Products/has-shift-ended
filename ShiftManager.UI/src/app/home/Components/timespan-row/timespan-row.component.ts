@@ -1,55 +1,43 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+
+function pad(value: number): string {
+  return String(value).padStart(2, '0');
+}
 
 @Component({
   selector: 'app-timespan-row',
   templateUrl: './timespan-row.component.html',
   styleUrls: ['./timespan-row.component.css']
 })
-export class TimespanRowComponent implements OnInit {
+export class TimespanRowComponent {
 
-  @Input() index: number = 0;
-  @Input() intervals: Date[] = [];
-  @Output() onGetData: EventEmitter<TimespanRowData> = new EventEmitter();
-  @Input() onSetTime: EventEmitter<null> | undefined;
+  @Input() index = 0;
+  @Input() value!: Date;
+  @Input() invalid = false;
+  @Output() valueChange = new EventEmitter<Date>();
 
-  public hours: number = 0;
-  public minutes: number = 0;
+  @ViewChild('timeInput') private timeInputRef?: ElementRef<HTMLInputElement>;
 
-  private eventSubscription: Subscription | undefined
-
-  constructor() { }
-
-  ngOnInit() {
-    this.eventSubscription = this.onSetTime?.subscribe(_ => {
-      this.setValues();
-    });
+  public get label(): string {
+    return this.index % 2 === 0 ? 'Ingresso' : 'Uscita';
   }
 
-  ngOndestroy() {
-    this.eventSubscription?.unsubscribe();
+  public get timeValue(): string {
+    return this.value ? `${pad(this.value.getHours())}:${pad(this.value.getMinutes())}` : '';
   }
 
-  public setValues() {
-    const day = new Date().getDay();
-    const month = new Date().getMonth();
-    const year = new Date().getFullYear();
-    const hour = this.hours;
-    const minutes = this.minutes;
-
-    this.intervals[this.index] = new Date(year, month, day, hour, minutes, 0);
+  public onTimeChange(raw: string): void {
+    if (!raw) {
+      return;
+    }
+    const [hours, minutes] = raw.split(':').map(Number);
+    // Preserva la data (anno/mese/giorno) della timbratura esistente, o oggi se non ancora impostata.
+    const base = this.value ?? new Date();
+    this.valueChange.emit(new Date(base.getFullYear(), base.getMonth(), base.getDate(), hours, minutes, 0, 0));
   }
 
-  public setTimeToNow() {
-    const now = new Date();
-
-    this.hours = now.getHours();
-    this.minutes = now.getMinutes();
+  public focus(): void {
+    this.timeInputRef?.nativeElement.focus();
+    this.timeInputRef?.nativeElement.select();
   }
-
-}
-
-export interface TimespanRowData {
-  index: number,
-  time: Date
 }
