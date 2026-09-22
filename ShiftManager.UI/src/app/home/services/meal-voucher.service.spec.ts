@@ -59,4 +59,24 @@ describe('Service: MealVoucher', () => {
     const intervals = [d(10, 0), d(13, 30), d(14, 0), d(16, 0)];
     expect(service.isMealVoucherEarned(intervals)).toBeFalse();
   });
+
+  it('timbrature incomplete (solo mattina, pausa non ancora fatta) -> mattina già soddisfatta, resto no di default', () => {
+    // 8:00-12:30 (4h30 >= 3h30): il turno non è ancora finito, non c'è ancora una pausa da valutare
+    const intervals = [d(8, 0), d(12, 30)];
+    const detail = service.getDetail(intervals);
+    expect(detail.morning).toBeTrue();
+    expect(detail.lunch).toBeFalse();
+    expect(detail.afternoon).toBeFalse();
+    expect(detail.earned).toBeFalse();
+  });
+
+  it('timbrature incomplete (mattina sotto soglia) -> nessun requisito ancora soddisfatto', () => {
+    // 8:00-9:00 (1h < 3h30)
+    const intervals = [d(8, 0), d(9, 0)];
+    const detail = service.getDetail(intervals);
+    expect(detail.morning).toBeFalse();
+    expect(detail.lunch).toBeFalse();
+    expect(detail.afternoon).toBeFalse();
+    expect(detail.earned).toBeFalse();
+  });
 });
