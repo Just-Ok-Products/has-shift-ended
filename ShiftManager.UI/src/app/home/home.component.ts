@@ -59,6 +59,12 @@ export class HomeComponent implements OnDestroy {
     this.recompute();
   }
 
+  // Le righe sono identificate dalla posizione: ogni modifica sostituisce il Date, e senza
+  // trackBy Angular ricreerebbe l'input facendo perdere il focus a metà digitazione.
+  public trackByIndex(index: number): number {
+    return index;
+  }
+
   public isInvalid(index: number): boolean {
     return this.dayState.invalidIndexes.includes(index);
   }

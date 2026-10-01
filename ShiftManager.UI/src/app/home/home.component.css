@@ -22,7 +22,13 @@
   gap: 0.6rem;
 }
 
+.toolbar {
+  display: flex;
+  gap: 0.6rem;
+}
+
 .add-button {
+  flex: 1;
   background: var(--accent);
   color: var(--bg);
   border: none;
@@ -34,10 +40,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-}
-
-.remove-button {
-  align-self: flex-start;
 }
 
 .trains-block {

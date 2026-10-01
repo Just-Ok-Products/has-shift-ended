@@ -17,21 +17,22 @@
   </div>
 
   <div class="column column--act">
-    <button type="button" class="add-button" (click)="addInterval()">Aggiungi timbratura</button>
+    <div class="toolbar">
+      <button type="button" class="add-button" (click)="addInterval()">Aggiungi timbratura</button>
+      <button type="button" class="remove-button" [disabled]="intervals.length === 0" (click)="removeLastInterval()">
+        Rimuovi ultima
+      </button>
+    </div>
 
     <div class="rows">
       <app-timespan-row
-        *ngFor="let value of intervals; let i = index"
+        *ngFor="let value of intervals; let i = index; trackBy: trackByIndex"
         [index]="i"
         [value]="value"
         [invalid]="isInvalid(i)"
         (valueChange)="onIntervalChange(i, $event)"
       ></app-timespan-row>
     </div>
-
-    <button type="button" class="remove-button" *ngIf="intervals.length > 0" (click)="removeLastInterval()">
-      Rimuovi ultima
-    </button>
 
     <div id="trains-block" class="trains-block">
       <app-trains></app-trains>

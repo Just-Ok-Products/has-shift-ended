@@ -25,4 +25,28 @@ describe('TimespanRowComponent', () => {
     component.onTimeChange('14:30');
     expect(emitted).toEqual(new Date(2024, 0, 1, 14, 30));
   });
+
+  it('maschera la digitazione in HH:MM e emette solo a orario completo e valido', () => {
+    const emitted: Date[] = [];
+    component.valueChange.subscribe(v => emitted.push(v));
+    const input = document.createElement('input');
+
+    input.value = '143';
+    component.onInput(input);
+    expect(input.value).toBe('14:3');
+    expect(emitted.length).toBe(0);
+
+    input.value = '1430';
+    component.onInput(input);
+    expect(input.value).toBe('14:30');
+    expect(emitted).toEqual([new Date(2024, 0, 1, 14, 30)]);
+
+    input.value = '2560';
+    component.onInput(input);
+    expect(emitted.length).toBe(1);
+
+    input.value = '9';
+    component.onInput(input);
+    expect(input.value).toBe('09');
+  });
 });
