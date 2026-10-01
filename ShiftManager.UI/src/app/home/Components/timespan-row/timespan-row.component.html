@@ -1,4 +1,5 @@
 <div class="row" [class.row--invalid]="invalid">
   <span class="label">{{ label }}</span>
-  <input #timeInput type="time" lang="it" class="digits" [value]="timeValue" (change)="onTimeChange(timeInput.value)">
+  <input #timeInput type="text" class="digits" inputmode="numeric" maxlength="5" placeholder="HH:MM" autocomplete="off"
+         [value]="timeValue" (input)="onInput(timeInput)" (blur)="timeInput.value = timeValue">
 </div>

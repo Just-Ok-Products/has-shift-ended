@@ -26,11 +26,23 @@ export class TimespanRowComponent {
     return this.value ? `${pad(this.value.getHours())}:${pad(this.value.getMinutes())}` : '';
   }
 
+  /** Maschera "HH:MM" a 24h (niente AM/PM): accetta solo cifre, inserisce i due punti, emette a orario completo e valido. */
+  public onInput(input: HTMLInputElement): void {
+    let digits = input.value.replace(/\D/g, '').slice(0, 4);
+    if (digits[0] > '2') {
+      digits = ('0' + digits).slice(0, 4); // "9" -> "09"
+    }
+    input.value = digits.length > 2 ? `${digits.slice(0, 2)}:${digits.slice(2)}` : digits;
+    if (digits.length === 4) {
+      this.onTimeChange(input.value);
+    }
+  }
+
   public onTimeChange(raw: string): void {
-    if (!raw) {
+    const [hours, minutes] = raw.split(':').map(Number);
+    if (!(hours < 24 && minutes < 60)) {
       return;
     }
-    const [hours, minutes] = raw.split(':').map(Number);
     // Preserva la data (anno/mese/giorno) della timbratura esistente, o oggi se non ancora impostata.
     const base = this.value ?? new Date();
     this.valueChange.emit(new Date(base.getFullYear(), base.getMonth(), base.getDate(), hours, minutes, 0, 0));
