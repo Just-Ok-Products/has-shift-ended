@@ -16,3 +16,10 @@ La checklist dei 4 requisiti si ricalcola ad ogni timbratura inserita, anche a g
 - pausa pranzo e fascia pomeridiana restano "no" finché non viene individuata una pausa pranzo
   valida (durata e finestra corrette): solo da quel momento la fascia mattutina si "blocca" al
   lavorato precedente la pausa, e la fascia pomeridiana viene valutata sul lavorato successivo.
+
+## Timbratura di ingresso ancora aperta
+Se l'ultima timbratura è un ingresso (numero dispari di timbrature), l'orario corrente viene
+trattato come una timbratura di uscita provvisoria per tutti i requisiti: il lavorato dell'ultimo
+intervallo cresce col passare del tempo (la UI si ricalcola ogni minuto), quindi il buono pasto
+può maturare senza inserire l'uscita. Alla timbratura di uscita reale il calcolo usa quella.
+L'uscita provvisoria non precede mai l'ingresso aperto (un ingresso nel futuro conta 0 minuti).

@@ -72,7 +72,7 @@ export class HomeComponent implements OnDestroy {
   private recompute(): void {
     const now = new Date();
     this.dayState = this._dayCalculator.compute(this.intervals, this.hoursDue, now);
-    this.mealVoucherDetail = this._mealVoucherService.getDetail(this.intervals);
+    this.mealVoucherDetail = this._mealVoucherService.getDetail(this.intervals, now);
     this.trainSuggestion = this.computeTrainSuggestion(now);
     this.syncTick();
   }
