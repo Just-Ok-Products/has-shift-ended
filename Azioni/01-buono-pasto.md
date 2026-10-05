@@ -50,3 +50,7 @@ Le soglie sono **costanti fisse** nel codice (non editabili dall'utente, a diffe
    - totale giornaliero sotto le 7h anche con le altre 3 condizioni soddisfatte → `false`
 
 5. **Verifica manuale** — avviare l'app (`npm start` in `ShiftManager.UI/`), inserire manualmente timbrature che coprano i vari casi sopra, controllare che lo snackbar mostri il messaggio corretto.
+
+## Aggiornamento: ingresso aperto
+Con numero dispari di timbrature, `getDetail(intervals, now)` chiude l'ultimo intervallo a `now`
+(uscita provvisoria). Dettagli in `rules/buoni-pasto.md`; test in `meal-voucher.service.spec.ts`.

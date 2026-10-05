@@ -79,4 +79,18 @@ describe('Service: MealVoucher', () => {
     expect(detail.afternoon).toBeFalse();
     expect(detail.earned).toBeFalse();
   });
+
+  it('ultima timbratura = ingresso: "adesso" conta come uscita provvisoria', () => {
+    // 8:00-12:30, pausa 12:30-13:00, ingresso 13:00 ancora aperto
+    const intervals = [d(8, 0), d(12, 30), d(13, 0)];
+    expect(service.getDetail(intervals, d(14, 0)).afternoon).toBeFalse(); // 1h
+    const detail = service.getDetail(intervals, d(15, 30)); // 2h30, totale 7h
+    expect(detail.afternoon).toBeTrue();
+    expect(detail.earned).toBeTrue();
+  });
+
+  it('solo un ingresso aperto: la mattina matura col passare del tempo', () => {
+    expect(service.getDetail([d(8, 0)], d(11, 0)).morning).toBeFalse();
+    expect(service.getDetail([d(8, 0)], d(11, 30)).morning).toBeTrue();
+  });
 });

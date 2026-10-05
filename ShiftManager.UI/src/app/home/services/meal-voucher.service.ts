@@ -21,8 +21,8 @@ export class MealVoucherService {
   private readonly LUNCH_WINDOW_START = '12:30';
   private readonly LUNCH_WINDOW_END = '14:30';
 
-  public isMealVoucherEarned(intervals: Date[]): boolean {
-    return this.getDetail(intervals).earned;
+  public isMealVoucherEarned(intervals: Date[], now = new Date()): boolean {
+    return this.getDetail(intervals, now).earned;
   }
 
   /**
@@ -30,9 +30,10 @@ export class MealVoucherService {
    * Ricalcolato ad ogni stato delle timbrature, anche incomplete: finché la pausa pranzo non è
    * individuata, mattina viene valutata su tutto il lavorato finora (è comunque prima di un'eventuale
    * pausa), mentre pausa e pomeriggio restano "no" di default perché non ancora determinabili.
+   * Se l'ultima timbratura è un ingresso, `now` fa da uscita provvisoria.
    */
-  public getDetail(intervals: Date[]): MealVoucherDetail {
-    const workIntervals = this.toWorkIntervals(intervals);
+  public getDetail(intervals: Date[], now = new Date()): MealVoucherDetail {
+    const workIntervals = this.toWorkIntervals(intervals, now);
     const total = this.sumMinutes(workIntervals) >= this.TOTAL_MIN_MINUTES;
 
     const lunchGapIndex = this.findLunchGapIndex(workIntervals);
@@ -46,10 +47,12 @@ export class MealVoucherService {
     return { morning, lunch, afternoon, total, earned: morning && lunch && afternoon && total };
   }
 
-  private toWorkIntervals(intervals: Date[]): WorkInterval[] {
+  private toWorkIntervals(intervals: Date[], now: Date): WorkInterval[] {
     const result: WorkInterval[] = [];
-    for (let i = 0; i + 1 < intervals.length; i += 2) {
-      result.push({ start: intervals[i], end: intervals[i + 1] });
+    for (let i = 0; i < intervals.length; i += 2) {
+      const start = intervals[i];
+      const end = intervals[i + 1] ?? new Date(Math.max(now.getTime(), start.getTime()));
+      result.push({ start, end });
     }
     return result;
   }
