@@ -19,11 +19,13 @@ describe('TimespanRowComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('preserva anno/mese/giorno cambiando solo ora e minuti (fix del bug su getDay)', () => {
+  it('emette sempre la data di oggi, anche se value è datato ieri', () => {
+    const now = new Date();
+    component.value = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1, 7, 37);
     let emitted: Date | undefined;
     component.valueChange.subscribe(v => emitted = v);
-    component.onTimeChange('14:30');
-    expect(emitted).toEqual(new Date(2024, 0, 1, 14, 30));
+    component.onTimeChange('08:02');
+    expect(emitted).toEqual(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 8, 2));
   });
 
   it('maschera la digitazione in HH:MM e emette solo a orario completo e valido', () => {
@@ -39,7 +41,8 @@ describe('TimespanRowComponent', () => {
     input.value = '1430';
     component.onInput(input);
     expect(input.value).toBe('14:30');
-    expect(emitted).toEqual([new Date(2024, 0, 1, 14, 30)]);
+    const now = new Date();
+    expect(emitted).toEqual([new Date(now.getFullYear(), now.getMonth(), now.getDate(), 14, 30)]);
 
     input.value = '2560';
     component.onInput(input);
