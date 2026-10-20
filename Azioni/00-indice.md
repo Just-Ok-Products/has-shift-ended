@@ -1,6 +1,6 @@
 # Piano di sviluppo
 
-Indice dei piani dettagliati: le 3 feature mancanti indicate in `CLAUDE.md` (punti 1-3) più il redesign dell'interfaccia (punto 4). Tutte e 4 completate.
+Indice dei piani dettagliati: le 3 feature mancanti indicate in `CLAUDE.md` (punti 1-3) più il redesign dell'interfaccia (punto 4) e il fix delle timbrature oltre la mezzanotte (punto 5). Tutte e 5 completate.
 
 **Stato feature 1-3**: implementate il 2026-09-18, in ordine sequenziale per via delle dipendenze condivise (stesse righe di `home.component.ts`, Dockerfile prerequisito del workflow CI/CD), committate in `ea54b70`. **Feature 4 (redesign)**: implementata lo stesso giorno, in una sessione successiva, non ancora committata.
 
@@ -8,6 +8,7 @@ Indice dei piani dettagliati: le 3 feature mancanti indicate in `CLAUDE.md` (pun
 2. [Treni](02-treni.md) — ✅ completata, con alcune deviazioni segnalate nel file (vedi sezione "Stato implementazione").
 3. [CI/CD](03-cicd.md) — ✅ completata. Restano 2 setup manuali una tantum su GitHub (vedi sezione "Stato implementazione").
 4. [Redesign UI/UX](04-redesign-ui.md) — ✅ completata (2026-09-18). Riprogettazione completa dell'interfaccia (pagina unica, hero a stati, scena low poly, rimozione di Material/Bootstrap/Font Awesome).
+5. [Timbrature ancorate al giorno corrente](05-timbrature-giorno-corrente.md) — ✅ completata (issue #4). Ogni timbratura è solo un orario del giorno corrente: con la tab aperta oltre la mezzanotte il calcolo non somma più 24h.
 
 Ogni file è pensato per essere eseguito in ordine e in modo autonomo (una feature = un file), ma **Treni** ha una dipendenza tecnica dalla parte "backend proxy" descritta al suo interno, che va completata per prima all'interno dello stesso file.
 

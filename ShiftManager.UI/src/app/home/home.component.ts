@@ -71,10 +71,21 @@ export class HomeComponent implements OnDestroy {
 
   private recompute(): void {
     const now = new Date();
+    this.anchorToToday(now);
     this.dayState = this._dayCalculator.compute(this.intervals, this.hoursDue, now);
     this.mealVoucherDetail = this._mealVoucherService.getDetail(this.intervals, now);
     this.trainSuggestion = this.computeTrainSuggestion(now);
     this.syncTick();
+  }
+
+  /** Una timbratura è solo un orario: a tab aperta oltre la mezzanotte le righe datate ieri vengono riportate a oggi. */
+  private anchorToToday(now: Date): void {
+    const isToday = (d: Date) => d.toDateString() === now.toDateString();
+    if (this.intervals.every(isToday)) {
+      return;
+    }
+    this.intervals = this.intervals.map(d =>
+      isToday(d) ? d : new Date(now.getFullYear(), now.getMonth(), now.getDate(), d.getHours(), d.getMinutes()));
   }
 
   private computeTrainSuggestion(now: Date): TrainSuggestionView {

@@ -43,9 +43,9 @@ export class TimespanRowComponent {
     if (!(hours < 24 && minutes < 60)) {
       return;
     }
-    // Preserva la data (anno/mese/giorno) della timbratura esistente, o oggi se non ancora impostata.
-    const base = this.value ?? new Date();
-    this.valueChange.emit(new Date(base.getFullYear(), base.getMonth(), base.getDate(), hours, minutes, 0, 0));
+    // Una timbratura è solo un orario: la data è sempre quella di oggi, anche se la riga è stata creata ieri.
+    const today = new Date();
+    this.valueChange.emit(new Date(today.getFullYear(), today.getMonth(), today.getDate(), hours, minutes, 0, 0));
   }
 
   public focus(): void {
